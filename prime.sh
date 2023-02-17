@@ -1,13 +1,12 @@
 #!/bin/bash
-echo -e "Enter Number : \c"
-read n
-for((i=2; i<=$n/2; i++))
+read -p "Enter a number: " x
+for((i=2; i<=$x/2; i++))
 do
-  ans=$(( n%i ))
-  if [ $ans -eq 0 ]
+  y=$(( x%i ))
+  if [ $y -eq 0 ]
   then
-    echo "$n is not a prime number."
+    echo "$x is not a prime number."
     exit 0
   fi
 done
-echo "$n is a prime number."
+echo "$x is a prime number."
