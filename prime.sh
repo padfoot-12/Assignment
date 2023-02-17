@@ -1,12 +1,22 @@
 #!/bin/bash
-read -p "Enter a number: " x
-for((i=2; i<=$x/2; i++))
+flag=0
+n=20
+echo " Prime numbers between 1 to $n are:"  
+echo "2"
+for((i=3;i<=n;))
 do
-  y=$(( x%i ))
-  if [ $y -eq 0 ]
-  then
-    echo "$x is not a prime number."
-    exit 0
+  for((j=i-1;j>=2;))
+  do
+    if [  `expr $i % $j` -ne 0 ] ; then
+      flag=1
+    else
+      flag=0
+      break
+    fi
+    j=`expr $j - 1`
+  done
+  if [ $flag -eq 1 ] ; then
+    echo $i
   fi
+  i=`expr $i + 1`
 done
-echo "$x is a prime number."
